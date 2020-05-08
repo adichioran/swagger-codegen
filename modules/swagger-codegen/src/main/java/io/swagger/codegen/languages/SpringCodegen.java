@@ -396,6 +396,8 @@ public class SpringCodegen extends AbstractJavaCodegen
         if ("/".equals(swagger.getBasePath())) {
             swagger.setBasePath("");
         }
+        boolean contextPathEmpty = swagger.getBasePath()==null || swagger.getBasePath().isEmpty();
+        additionalProperties.put("contextPathEmpty", contextPathEmpty);
 
         if(!additionalProperties.containsKey(TITLE)) {
             // From the title, compute a reasonable name for the package and the API
